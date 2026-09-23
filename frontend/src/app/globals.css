@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+/* ── IBM Design Token Theme ────────────────────────────────────────────── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* IBM Carbon palette */
+  --color-ibm-blue: #0F62FE;
+  --color-ibm-blue-hover: #0043CE;
+  --color-ibm-blue-light: #D0E2FF;
+  --color-ibm-blue-10: #EDF5FF;
+  --color-surface-primary: #FFFFFF;
+  --color-surface-secondary: #F4F4F4;
+  --color-surface-tertiary: #E8E8E8;
+  --color-border-default: #E0E0E0;
+  --color-border-subtle: #F4F4F4;
+  --color-text-primary: #161616;
+  --color-text-secondary: #525252;
+  --color-text-tertiary: #8D8D8D;
+  --color-danger: #DA1E28;
+  --color-danger-bg: #FFF1F1;
+  --color-danger-border: #FFD7D9;
+  --color-warning: #B28600;
+  --color-warning-bg: #FFF8E1;
+  --color-success: #24A148;
+  --color-success-bg: #DEFBE6;
+  --color-success-border: #A7F0BA;
+
+  /* Fonts */
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Fira Code', monospace;
+}
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #161616;
+}
+
+/* ── Base Styles ──────────────────────────────────────────────────────── */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar Styling ────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #C6C6C6;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8D8D8D;
+}
+
+/* ── Utility Animations ──────────────────────────────────────────────── */
+@keyframes pulse-danger {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(218, 30, 40, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(218, 30, 40, 0); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-pulse-danger {
+  animation: pulse-danger 2s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.animate-scan-line {
+  animation: scan-line 2s linear infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(15, 98, 254, 0.08), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ── Glass Effect ─────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(224, 224, 224, 0.6);
+}
+
+/* ── Grid Pattern Background ──────────────────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, #F4F4F4 1px, transparent 1px),
+    linear-gradient(to bottom, #F4F4F4 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-grid-subtle {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ── Gradient Overlays ────────────────────────────────────────────────── */
+.gradient-fade-b {
+  background: linear-gradient(to bottom, transparent, white);
+}
+
+.gradient-hero {
+  background: radial-gradient(ellipse at 30% 20%, rgba(15, 98, 254, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(218, 30, 40, 0.04) 0%, transparent 50%);
+}
+
+/* ── React Flow Overrides ─────────────────────────────────────────────── */
+.react-flow__node {
+  font-family: var(--font-sans) !important;
+}
+
+.react-flow__edge-path {
+  stroke-width: 2;
+}
+
+.react-flow__minimap {
+  border-radius: 8px;
+  border: 1px solid #E0E0E0;
+  overflow: hidden;
+}
+
+.react-flow__controls {
+  border-radius: 8px;
+  border: 1px solid #E0E0E0;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.react-flow__controls-button {
+  border: none !important;
+  border-bottom: 1px solid #E0E0E0 !important;
+}
+
+/* ── Code Diff Overrides ──────────────────────────────────────────────── */
+.diff-viewer pre {
+  font-family: var(--font-mono) !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
